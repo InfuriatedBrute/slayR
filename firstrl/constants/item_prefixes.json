@@ -1,0 +1,5 @@
+#READONLY
+{
+  "none":{"name":"", "drop_weight":1, "npc_weight":1},
+  "cost_reduction":{"name":"Hardy ", "drop_weight":1, "npc_weight":1}
+}
