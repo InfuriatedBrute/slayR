@@ -3,17 +3,6 @@ import inspect
 
 
 def __intialize_all(self, pre, names, defaults, func, *args, **kargs):
-    """
-    Automatically assigns the parameters
-    
-    >>> class process:
-    ...     @initialize_all_pre         (or @initialize_all_post)
-    ...     def __init__(self, cmd, reachable=False, user='root'):
-    ...         pass
-    >>> p = process('halt', True)
-    >>> p.cmd, p.reachable, p.user
-    ('halt', True, 'root')
-    """
     if pre:
         toReturn = func(self, *args, **kargs)
     for name, arg in list(zip(names[1:], args)) + list(kargs.items()):
@@ -28,6 +17,9 @@ def __intialize_all(self, pre, names, defaults, func, *args, **kargs):
 
 
 def initialize_all_pre(func):
+    """
+    Assigns all the variables in the input of the function to the class containing the function before running the function.
+    """
 
     names, _, _, defaults = inspect.getargspec(func)
 
@@ -39,6 +31,9 @@ def initialize_all_pre(func):
 
 
 def initialize_all_post(func):
+    """
+    Assigns all the variables in the input of the function to the class containing the function after running the function.
+    """
 
     names, _, _, defaults = inspect.getargspec(func)
 
