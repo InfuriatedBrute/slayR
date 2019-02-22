@@ -1,20 +1,19 @@
 import textwrap
+from utils.initialize_all import initialize_all_pre
 
 
 class Message:
 
+    @initialize_all_pre
     def __init__(self, text, color=(255, 255, 255)):
-        self.text = text
-        self.color = color
+        pass
 
 
 class MessageLog:
 
+    @initialize_all_pre
     def __init__(self, x, width, height):
-        self.messages = []
-        self.x = x
-        self.width = width
-        self.height = height
+        pass
 
     def add_message(self, message):
         # Split the message if necessary, among multiple lines

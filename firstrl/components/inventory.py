@@ -1,11 +1,12 @@
 from game_messages import Message
 import item_functions
+from utils.initialize_all import initialize_all_pre
 
 
 class Inventory:
 
+    @initialize_all_pre
     def __init__(self, capacity):
-        self.capacity = capacity
         self.items = []
 
     def add_item(self, item, colors):

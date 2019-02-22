@@ -1,13 +1,12 @@
 from loader_functions.constants import config
+from utils.initialize_all import initialize_all_pre
 
 
 class Level:
 
+    @initialize_all_pre
     def __init__(self, level_up_base=config['level_up_base'], level_up_factor=config['level_up_factor'], current_level=1, current_xp=0):
-        self.current_level = current_level
-        self.current_xp = current_xp
-        self.level_up_base = level_up_base
-        self.level_up_factor = level_up_factor
+        pass
 
     @property
     def experience_to_next_level(self):

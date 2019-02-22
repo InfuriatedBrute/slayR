@@ -1,15 +1,12 @@
 from game_messages import Message
+from utils.initialize_all import initialize_all_pre
 
 
 class Fighter:
 
+    @initialize_all_pre
     def __init__(self, hp, defense, power, xp=0, xpBounty=0):
-        self.base_max_hp = hp
-        self.hp = hp
-        self.base_defense = defense
-        self.base_power = power
-        self.xp = xp
-        self.xpBounty = xpBounty
+        pass
         
     @property
     def max_hp(self):

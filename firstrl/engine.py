@@ -29,12 +29,6 @@ def main():
     con = tdl.Console(config['screen_width'], config['screen_height'])
     panel = tdl.Console(config['screen_width'], config['panel_height'])
 
-    player = None
-    entities = []
-    game_map = None
-    message_log = None
-    game_state = None
-
     show_main_menu = True
     show_load_error_message = False
 
@@ -87,7 +81,7 @@ def main():
             panel.clear()
             play_game(player, entities, game_map, message_log, game_state, root_console, con, panel, config)
 
-            show_main_menu = True
+            show_main_menu = True  # Once done playing the game, if still open, show main menu
 
 
 def play_game(player, entities, game_map, message_log, game_state, root_console, con, panel, config):
