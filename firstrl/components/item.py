@@ -9,7 +9,7 @@ class Use_Case(Enum):
 
 class Item:
 
-    def __init__(self, use_function=None, use_case=Use_Case.active, consumable=False, prefix=None, targeted=False, 
+    def __init__(self, use_function=None, use_case=Use_Case.active, consumable=False, prefix=None, targeted=False,
                  targeting_message={'message':'Choose a target'}, **kwargs):
         self.use_function = use_function
         self.targeting = targeted

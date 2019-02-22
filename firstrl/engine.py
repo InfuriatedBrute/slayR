@@ -13,13 +13,14 @@ from map_utils import next_floor
 from menus import main_menu, message_box
 from render_functions import clear_all, render_all
 
-
 # Possible engine features: keyboard targeting, improved LoS, examining, "which thing would you like to pick up"
 # Run function, ? screen
-font_file = 'font/'+config['font']+'.png'
+font_file = 'font/' + config['font'] + '.png'
+
 
 def base_font():
     tdl.set_font(font_file, greyscale=config['greyscale'], altLayout=True)
+
 
 def main():
     base_font()
@@ -151,14 +152,12 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
         fullscreen = action.get('fullscreen')
         left_click = mouse_action.get('left_click')
         right_click = mouse_action.get('right_click')
-        
-
 
         player_turn_results = []
         
-        #Start of action code, each button press / click results in one of these if statements being executed
-        #Clicking and pressing really fast or sleeping the thread has been shown to cause multiple actions
-        #Hence why we need a dictionary of actions instead of a single action, despite taking far more code
+        # Start of action code, each button press / click results in one of these if statements being executed
+        # Clicking and pressing really fast or sleeping the thread has been shown to cause multiple actions
+        # Hence why we need a dictionary of actions instead of a single action, despite taking far more code
         if move and game_state == GameStates.PLAYERS_TURN:
             dx, dy = move
             destination_x = player.x + dx
@@ -246,7 +245,7 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
             return True
         if fullscreen:
             tdl.set_fullscreen(not tdl.get_fullscreen())
-        #End of action code
+        # End of action code
 
         for player_turn_result in player_turn_results:
             message = player_turn_result.get('message')
@@ -314,7 +313,7 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
             if xpBounty:
                 leveled_up = player.level.add_xp(xpBounty)
                 message_log.add_message(Message('You gain {0} experience points.'.format(xpBounty)))
-#TODO enchanted equippable items don't target correctly
+# TODO enchanted equippable items don't target correctly
                 if leveled_up:
                     message_log.add_message(Message(
                         'Your battle skills grow stronger! You reached level {0}'.format(player.level.current_level) + '!',

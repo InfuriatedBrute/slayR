@@ -10,7 +10,7 @@ from map_utils import GameMap, make_map
 from render_functions import RenderOrder
 
 
-def get_game_variables(settings = config):
+def get_game_variables(settings=config):
     """Initializes the player entity, the game map, the message log, and the game state"""
     fighter_component = Fighter(hp=100, defense=1, power=2)
     inventory_component = Inventory(26)

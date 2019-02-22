@@ -1,23 +1,20 @@
-from tdl.map import Map
-
+import json
 from random import randint, shuffle
 
+from tdl.map import Map
+
 from components.ai import BasicMonster
-from components.fighter import Fighter
-from components.item import Item
-from components.stairs import Stairs
-
-from entity import Entity
-
-from game_messages import Message
-import json
-
-from render_functions import RenderOrder
-from random_utils import random_choice_from_dict, from_dungeon_level
 from components.equipment_slots import EquipmentSlots
 from components.equippable import Equippable
+from components.fighter import Fighter
+from components.item import Item
 from components.item import Use_Case
+from components.stairs import Stairs
+from entity import Entity
+from game_messages import Message
 from loader_functions.constants import config, colors, items, item_prefixes, enchantments
+from random_utils import random_choice_from_dict, from_dungeon_level
+from render_functions import RenderOrder
 
 
 class GameMap(Map):
@@ -101,10 +98,10 @@ def place_entities(room, entities, dungeon_level, colors, num_monsters):
             if 'totem' in tags:
                 raise NotImplementedError
             while('consumable' in tags and enchantment['consumable_name'] is None):
-                #No mundane consumables allowed
-                enchantment=random_choice_from_dict(enchantments, 'drop_weight')
+                # No mundane consumables allowed
+                enchantment = random_choice_from_dict(enchantments, 'drop_weight')
     
-            print("\nData: " + json.dumps(itemData) +"\nEnchantment: " + json.dumps(enchantment) + "\nPrefix: " + json.dumps(prefix))
+            print("\nData: " + json.dumps(itemData) + "\nEnchantment: " + json.dumps(enchantment) + "\nPrefix: " + json.dumps(prefix))
             
             attack_bonus = itemData.get('attack_bonus')
             defense_bonus = itemData.get('defense_bonus')
@@ -125,8 +122,8 @@ def place_entities(room, entities, dungeon_level, colors, num_monsters):
             if(enchantment['function_name'] == ""):
                 use_case = None
             item_name = enchantment['consumable_name'] if 'consumable' in tags else prefix['name'] + '' + itemData['name'] + '' + enchantment['adjective']
-            item = Entity(x, y, icon, color, item_name, equippable=equippable_component, render_order=RenderOrder.ITEM, 
-                item=Item(use_case=use_case, use_function=enchantment['function_name'], consumable=('consumable' in tags), targeted = targeted, prefix=prefix))
+            item = Entity(x, y, icon, color, item_name, equippable=equippable_component, render_order=RenderOrder.ITEM,
+                item=Item(use_case=use_case, use_function=enchantment['function_name'], consumable=('consumable' in tags), targeted=targeted, prefix=prefix))
 
             entities.append(item)
  

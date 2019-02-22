@@ -1,6 +1,8 @@
 from loader_functions.constants import config
 
+
 class Level:
+
     def __init__(self, level_up_base=config['level_up_base'], level_up_factor=config['level_up_factor'], current_level=1, current_xp=0):
         self.current_level = current_level
         self.current_xp = current_xp

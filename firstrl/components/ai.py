@@ -1,4 +1,5 @@
 class BasicMonster:
+
     def take_turn(self, target, game_map, entities):
         results = []
 

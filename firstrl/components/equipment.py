@@ -1,7 +1,6 @@
 from components.equipment_slots import EquipmentSlots
 
 
-
 class Equipment:
     
     def __init__(self, *equippable_entities):
@@ -14,7 +13,6 @@ class Equipment:
             if not slotSet:
                 setattr(self, slotType.name, None)
         
-        
     def _sum_of_stat(self, stat):
         bonus = 0
         for slot_type in EquipmentSlots:
@@ -22,7 +20,7 @@ class Equipment:
             if item_in_slot is not None and item_in_slot.equippable:
                 toAdd = getattr(item_in_slot.equippable, stat)
                 if toAdd:
-                    bonus+= toAdd
+                    bonus += toAdd
         return bonus
 
     @property
@@ -40,11 +38,11 @@ class Equipment:
     def toggle_equip(self, equippable_entity):
         results = []
         slot = equippable_entity.equippable.slot.name
-        #If the item is equipped dequip it
+        # If the item is equipped dequip it
         if getattr(self, slot) == equippable_entity:
             setattr(self, slot, None)
             results.append({'dequipped': equippable_entity})
-        #Else equip the new and dequip the old
+        # Else equip the new and dequip the old
         else:
             if getattr(self, slot):
                 results.append({'dequipped': getattr(self, slot)})

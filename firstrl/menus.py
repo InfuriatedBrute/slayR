@@ -1,6 +1,6 @@
-import tdl
-
 import textwrap
+
+import tdl
 
 
 def menu(con, root, header, options, width, screen_width, screen_height):
@@ -31,6 +31,7 @@ def menu(con, root, header, options, width, screen_width, screen_height):
     x = screen_width // 2 - width // 2
     y = screen_height // 2 - height // 2
     root.blit(window, x, y, width, height, 0, 0)
+
     
 def inventory_menu(con, root, header, player, inventory_width, screen_width, screen_height):
     # show a menu with each item of the inventory as an option
@@ -49,6 +50,7 @@ def inventory_menu(con, root, header, player, inventory_width, screen_width, scr
             else: 
                 options.append(item.name)
     menu(con, root, header, options, inventory_width, screen_width, screen_height)
+
     
 def main_menu(con, root_console, background_image, screen_width, screen_height, colors):
     background_image.blit_2x(root_console, 0, 0)
@@ -62,6 +64,7 @@ def main_menu(con, root_console, background_image, screen_width, screen_height, 
     root_console.draw_str(center, screen_height - 2, title, bg=None, fg=colors.get('light_yellow'))
 
     menu(con, root_console, '', ['Play a new game', 'Continue last game', 'Quit'], 24, screen_width, screen_height)
+
     
 def level_up_menu(con, root, header, player, menu_width, screen_width, screen_height):
     options = ['Constitution (+20 HP, from {0})'.format(player.fighter.max_hp),
@@ -69,6 +72,7 @@ def level_up_menu(con, root, header, player, menu_width, screen_width, screen_he
                'Agility (+1 defense, from {0})'.format(player.fighter.defense)]
 
     menu(con, root, header, options, menu_width, screen_width, screen_height)   
+
     
 def character_screen(root_console, player, character_screen_width, character_screen_height, screen_width,
                      screen_height):
@@ -87,7 +91,6 @@ def character_screen(root_console, player, character_screen_width, character_scr
     x = screen_width // 2 - character_screen_width // 2
     y = screen_height // 2 - character_screen_height // 2
     root_console.blit(window, x, y, character_screen_width, character_screen_height, 0, 0)
-
 
     
 def message_box(con, root_console, header, width, screen_width, screen_height):

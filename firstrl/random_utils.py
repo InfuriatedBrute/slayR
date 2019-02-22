@@ -12,6 +12,7 @@ def random_choice_from_dict(choice_dict, weight_name):
     value = choice_dict[key]
     return value
 
+
 def from_dungeon_level(table, dungeon_level):
     for (value, level) in reversed(table):
         if dungeon_level >= level:

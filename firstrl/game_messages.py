@@ -2,12 +2,14 @@ import textwrap
 
 
 class Message:
+
     def __init__(self, text, color=(255, 255, 255)):
         self.text = text
         self.color = color
 
 
 class MessageLog:
+
     def __init__(self, x, width, height):
         self.messages = []
         self.x = x

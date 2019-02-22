@@ -96,7 +96,7 @@ def render_all(con, panel, entities, game_map, fov_recompute, root_console, mess
             panel.draw_str(indent, y, entity.name, fg=colors['white'], bg=None)
             panel.draw_str(indent + config['name_length'] + (2 if rightSide else 1), y, '{0}/1/2'.format(relative_hp), fg=colors['light_red'], bg=None)
             if(rightSide):
-                y+=1
+                y += 1
             rightSide = not rightSide
         
     panel.draw_str(1, 7, 'Dungeon Level: {0}'.format(game_map.dungeon_level), fg=colors['white'], bg=None)

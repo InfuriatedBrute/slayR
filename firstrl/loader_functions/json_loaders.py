@@ -1,5 +1,5 @@
-import os
 from json import loads, dumps
+import os
 
 
 def remove_comments(s):
