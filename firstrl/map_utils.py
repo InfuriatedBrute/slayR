@@ -76,7 +76,7 @@ def place_entities(room, entities, dungeon_level, colors, num_monsters):
         y = randint(room.y1 + 1, room.y2 - 1)
 
         if not any([entity for entity in entities if entity.x == x and entity.y == y]):
-            fighter_component = Fighter(hp=10, defense=0, power=3, xpBounty=35)
+            fighter_component = Fighter(base_hp=10, base_defense=0, base_power=3, xpBounty=35)
             ai_component = BasicMonster()
 
             monster = Entity(x, y, 'o', colors.get('desaturated_green'), 'Orc', blocks=True,

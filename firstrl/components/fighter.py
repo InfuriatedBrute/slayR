@@ -5,8 +5,8 @@ from utils.initialize_all import initialize_all_pre
 class Fighter:
 
     @initialize_all_pre
-    def __init__(self, hp, defense, power, xp=0, xpBounty=0):
-        pass
+    def __init__(self, base_hp, base_defense, base_power, xp=0, xpBounty=0):
+        self.hp = base_hp
         
     @property
     def max_hp(self):
@@ -15,7 +15,7 @@ class Fighter:
         else:
             bonus = 0
 
-        return self.base_max_hp + bonus
+        return self.base_hp + bonus
 
     @property
     def power(self):

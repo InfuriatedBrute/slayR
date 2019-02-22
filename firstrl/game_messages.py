@@ -13,7 +13,7 @@ class MessageLog:
 
     @initialize_all_pre
     def __init__(self, x, width, height):
-        pass
+        self.messages = []
 
     def add_message(self, message):
         # Split the message if necessary, among multiple lines

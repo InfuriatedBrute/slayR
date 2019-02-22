@@ -7,10 +7,10 @@ def __intialize_all(self, pre, names, defaults, func, *args, **kargs):
         toReturn = func(self, *args, **kargs)
     for name, arg in list(zip(names[1:], args)) + list(kargs.items()):
         setattr(self, name, arg)
-    
-    for name, default in zip(reversed(names), reversed(defaults)):
-        if not hasattr(self, name):
-            setattr(self, name, default)
+    if defaults:
+        for name, default in zip(reversed(names), reversed(defaults)):
+            if not hasattr(self, name):
+                setattr(self, name, default)
     if not pre :
         toReturn = func(self, *args, **kargs)
     return toReturn

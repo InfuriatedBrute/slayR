@@ -12,7 +12,7 @@ from render_functions import RenderOrder
 
 def get_game_variables(settings=config):
     """Initializes the player entity, the game map, the message log, and the game state"""
-    fighter_component = Fighter(hp=100, defense=1, power=2)
+    fighter_component = Fighter(base_hp=100, base_defense=1, base_power=2)
     inventory_component = Inventory(26)
     level_component = Level(level_up_base=settings['level_up_base'], level_up_factor=settings['level_up_factor'])
     equipment_component = Equipment()

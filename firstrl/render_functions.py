@@ -75,6 +75,7 @@ def render_all(con, panel, entities, game_map, fov_recompute, root_console, mess
 
     # Print the game messages, one line at a time
     y = 1
+
     for message in message_log.messages:
         panel.draw_str(message_log.x, y, message.text, bg=None, fg=message.color)
         y += 1
