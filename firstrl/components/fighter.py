@@ -42,7 +42,7 @@ class Fighter:
 
         if self.hp <= 0:
             results.append({'dead': self.owner, 'xpBounty' : self.xpBounty})
-
+        
         return results
         
     def heal(self, amount):

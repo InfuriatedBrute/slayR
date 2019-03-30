@@ -1,5 +1,6 @@
 from enum import Enum
 from utils.initialize_all import initialize_all_pre
+from game_messages import Message
 
 
 class Use_Case(Enum):
@@ -12,6 +13,6 @@ class Item:
 
     @initialize_all_pre
     def __init__(self, use_function=None, use_case=Use_Case.active, consumable=False, prefix=None, targeted=False,
-                 targeting_message={'message':'Choose a target'}, **kwargs):
+                 targeting_message=Message('Choose a target'), **kwargs):
         pass
         
