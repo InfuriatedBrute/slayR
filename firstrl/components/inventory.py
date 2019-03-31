@@ -1,7 +1,8 @@
 from game_messages import Message
 import item_functions
 from utils.initialize_all import initialize_all_pre
-
+from loader_functions.constants import colors
+from components.equipment_slots import EquipmentSlots
 
 class Inventory:
 
@@ -27,13 +28,13 @@ class Inventory:
 
         return results
 
-    def use(self, item_entity, colors, game_map, entities, target_x=None, target_y=None):
+    def use(self, item_entity, game_map, entities, target_x=None, target_y=None, triggered = False):
         results = []
         next_turn = False
 
         item_component = item_entity.item
 
-        if item_component.use_function is None or item_entity.equippable:
+        if item_component.use_function is None or (item_entity.equippable and not triggered):
             equippable_component = item_entity.equippable
 
             if equippable_component:
@@ -62,9 +63,10 @@ class Inventory:
         
     def drop_item(self, item, colors):
         results = []
-        
-        if self.owner.equipment.main_hand == item or self.owner.equipment.off_hand == item:
-            self.owner.equipment.toggle_equip(item)
+        for slot in EquipmentSlots:
+            if getattr(self.owner.equipment, slot.name) == item:
+                self.owner.equipment.toggle_equip(item)
+                break
 
         item.x = self.owner.x
         item.y = self.owner.y

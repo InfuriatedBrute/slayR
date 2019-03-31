@@ -161,7 +161,7 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
                 target = get_blocking_entity_at_location(entities, destination_x, destination_y)
 
                 if target:
-                    attack_results = player.fighter.attack(target)
+                    attack_results = player.fighter.attack(target, game_map, entities)
                     player_turn_results.extend(attack_results)
                 else:
                     player.move(dx, dy)
@@ -185,7 +185,7 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
                         fov_recompute = True
                         con.clear()
                         break
-            else:#TODO items do not consume a turn,  passive items don't trigger, targeted items don't exit targeting
+            else:
                 message_log.add_message(Message('There is nothing here to interact with.', colors.get('yellow')))
         
         if level_up:
@@ -213,7 +213,7 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
             item = player.inventory.items[inventory_index]
 
             if game_state == GameStates.SHOW_INVENTORY:
-                results, next_turn = player.inventory.use(item, colors, entities=entities, game_map=game_map)
+                results, next_turn = player.inventory.use(item, entities=entities, game_map=game_map)
                 if(next_turn): game_state = GameStates.ENEMY_TURN
                 player_turn_results.extend(results)
 
@@ -224,7 +224,7 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
             if left_click:
                 target_x, target_y = left_click
 
-                item_use_results, next_turn = player.inventory.use(targeting_item, colors, entities=entities,
+                item_use_results, next_turn = player.inventory.use(targeting_item, entities=entities,
                                                         game_map=game_map, target_x=target_x, target_y=target_y)
                 if(next_turn): game_state = GameStates.ENEMY_TURN
                 player_turn_results.extend(item_use_results)
@@ -346,7 +346,6 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
 
     # If this line is reached the program was quit via the exit button. Save and quit.
     save_game(player, entities, game_map, message_log, game_state)
-
-                
+          
 if __name__ == '__main__':
     main()
