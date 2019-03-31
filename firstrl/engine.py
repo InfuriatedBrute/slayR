@@ -326,7 +326,7 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
 
                         if message:
                             message_log.add_message(message)
-
+#TODO passives don't work
                         if dead_entity:
                             if dead_entity == player:
                                 message, game_state = kill_player(dead_entity, colors)

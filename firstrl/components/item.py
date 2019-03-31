@@ -12,7 +12,7 @@ class Use_Case(Enum):
 class Item:
 
     @initialize_all_pre
-    def __init__(self, use_function=None, use_case=Use_Case.active, consumable=False, prefix=None, targeted=False,
+    def __init__(self, use_function=None, use_case=None, ability_power = None, consumable=False, prefix=None, targeted=False,
                  targeting_message=Message('Choose a target'), **kwargs):
         pass
         

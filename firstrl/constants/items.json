@@ -2,7 +2,7 @@
 {
   "sword":{"drop_weight" : 1, "npc_weight" : 1, "icon":"+", "tags" : ["passive", "weapon"], "attack_bonus" : 3, "name":"Sword"},
   "chainmail":{"drop_weight" : 1, "npc_weight" : 1, "icon":"]", "tags" : ["passive", "armor"], "defense_bonus" : 3, "name":"Chainmail"},
-  "staff":{"drop_weight" : 1, "npc_weight" : 0, "icon" : "/", "tags" : ["active", "targeted"], "name":"Staff"},
+  "staff":{"drop_weight" : 99, "npc_weight" : 0, "icon" : "/", "tags" : ["active", "targeted"], "name":"Staff"},
   "charm":{"drop_weight" : 1, "npc_weight" : 0, "icon" : "&", "tags" : ["active"], "name":"Charm"},
   //"wand":{"drop_weight" : 1, "npc_weight" : 0, "icon" : "~", "tags" : ["active", "targeted", "totem"], "name":"Wand"},
   "potion":{"drop_weight" : 1, "npc_weight" : 0, "icon" : "!", "tags" : ["active", "consumable"], "name":"Potion"}
