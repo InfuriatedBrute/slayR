@@ -122,7 +122,6 @@ def place_entities(room, entities, dungeon_level, colors, num_monsters):
             if(enchantment['function_name'] == ""):
                 use_case = None
             item_name = enchantment['consumable_name'] if 'consumable' in tags else prefix['name'] + '' + itemData['name'] + '' + enchantment['adjective']
-            #URGENT TODO
             item = Entity(x, y, icon, color, item_name, equippable=equippable_component, render_order=RenderOrder.ITEM,
                 item=Item(use_case=use_case, use_function=enchantment['function_name'], ability_power=enchantment['ability_power'], consumable=('consumable' in tags), targeted=targeted, prefix=prefix))
 

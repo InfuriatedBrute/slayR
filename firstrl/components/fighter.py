@@ -46,10 +46,13 @@ class Fighter:
         return results
         
     def heal(self, amount):
+        results = []
         self.hp += amount
 
         if self.hp > self.max_hp:
             self.hp = self.max_hp
+            
+        return results
 
     def attack(self, target):
         results = []

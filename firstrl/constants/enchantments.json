@@ -2,5 +2,5 @@
 {
   "none":{"function_name":null, "consumable_name":null, "adjective":"", "color":"white", "drop_weight":0, "npc_weight":5, "ability_power":null},
   "damage":{"function_name":"damage", "consumable_name":"Deathgem", "adjective":" of death", "color":"black", "drop_weight":1, "npc_weight":1, "ability_power":99, "health_cost":1, "stamina_cost":0, "spirit_cost": 0},
-  "heal":{"function_name":"heal", "consumable_name":"Lifegem", "adjective":" of life", "color":"red", "drop_weight":1, "npc_weight":1, "ability_power":99, "health_cost":0, "stamina_cost":0, "spirit_cost": 0}
+  "heal":{"function_name":"heal", "consumable_name":"Lifegem", "adjective":" of life", "color":"red", "drop_weight":99, "npc_weight":1, "ability_power":99, "health_cost":0, "stamina_cost":0, "spirit_cost": 0}
 }

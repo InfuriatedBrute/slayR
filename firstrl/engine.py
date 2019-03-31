@@ -185,7 +185,7 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
                         fov_recompute = True
                         con.clear()
                         break
-            else:
+            else:#TODO items do not consume a turn,  passive items don't trigger, targeted items don't exit targeting
                 message_log.add_message(Message('There is nothing here to interact with.', colors.get('yellow')))
         
         if level_up:
@@ -213,8 +213,10 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
             item = player.inventory.items[inventory_index]
 
             if game_state == GameStates.SHOW_INVENTORY:
-                player_turn_results.extend(player.inventory.use(item, colors, entities=entities,
-                                                                game_map=game_map))
+                results, next_turn = player.inventory.use(item, colors, entities=entities, game_map=game_map)
+                if(next_turn): game_state = GameStates.ENEMY_TURN
+                player_turn_results.extend(results)
+
             elif game_state == GameStates.DROP_INVENTORY:
                 player_turn_results.extend(player.inventory.drop_item(item, colors))
         
@@ -222,8 +224,9 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
             if left_click:
                 target_x, target_y = left_click
 
-                item_use_results = player.inventory.use(targeting_item, colors, entities=entities,
+                item_use_results, next_turn = player.inventory.use(targeting_item, colors, entities=entities,
                                                         game_map=game_map, target_x=target_x, target_y=target_y)
+                if(next_turn): game_state = GameStates.ENEMY_TURN
                 player_turn_results.extend(item_use_results)
             elif right_click:
                 player_turn_results.append({'targeting_cancelled': True})
@@ -307,7 +310,6 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
             if xpBounty:
                 leveled_up = player.level.add_xp(xpBounty)
                 message_log.add_message(Message('You gain {0} experience points.'.format(xpBounty)))
-# TODO enchanted equippable items don't target correctly
                 if leveled_up:
                     message_log.add_message(Message(
                         'Your battle skills grow stronger! You reached level {0}'.format(player.level.current_level) + '!',
@@ -326,7 +328,6 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
 
                         if message:
                             message_log.add_message(message)
-#TODO passives don't work
                         if dead_entity:
                             if dead_entity == player:
                                 message, game_state = kill_player(dead_entity, colors)

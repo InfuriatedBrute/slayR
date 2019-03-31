@@ -29,6 +29,7 @@ class Inventory:
 
     def use(self, item_entity, colors, game_map, entities, target_x=None, target_y=None):
         results = []
+        next_turn = False
 
         item_component = item_entity.item
 
@@ -41,10 +42,8 @@ class Inventory:
                 results.append({'message': Message('The {0} cannot be used'.format(item_entity.name),
                                                    colors.get('yellow'))})
         else:
-            if item_component.targeted and not (target_x or target_y):
-                # Item still needs to be targeted
+            if item_component.targeted and not (target_x or target_y): # Item still needs to be targeted
                 results.append({'targeting': item_entity})
-                #TODO something to do with targeting, fixed it before but didn't commit, huge waste of time
             else:
                 if not target_x and not target_y:  # and not item_component.targeted
                     target_x = self.owner.x
@@ -54,8 +53,9 @@ class Inventory:
 
                 item_use_results_except_consumed = list(filter(lambda x : not x.get('consumed'), item_use_results))
                 results.extend(item_use_results_except_consumed)
+                next_turn = True
 
-        return results
+        return results, next_turn
 
     def remove_item(self, item):
         self.items.remove(item)
