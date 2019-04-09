@@ -83,20 +83,22 @@ def load_json(path):
         return toReturn
 
 
-def save_json(to_save, path, sort_keys=False, indent=2):
-    """Saves the to_save dictionary to a json file if the path is a json file,
-     or if the path is a directory, saves each top-level dictionary value to a 
-     json file with the name of the key. Untested and cannot save multiple
-     folders because it can only tell whether a file is meant to be json or folder
-     from the path. Will throw an error when trying to overwrite a #READONLY file.
-     Note that for frequent saving data_shelvers are preferred, json is used when 
-     human-readability is prioritized over ease of saving. In practice this means
-     persistent settings are json, often read-only, and game-specific data is shelved. """
-    if(".json" in path):
-        __write_if_not_readonly(to_save, path, sort_keys, indent)
-    else:
-        for file_name, data in to_save:
-            save_json(data, path + "/" + file_name + ".json", sort_keys, indent)
+# unused
+#
+# def save_json(to_save, path, sort_keys=False, indent=2):
+#     """Saves the to_save dictionary to a json file if the path is a json file,
+#      or if the path is a directory, saves each top-level dictionary value to a 
+#      json file with the name of the key. Untested and cannot save multiple
+#      folders because it can only tell whether a file is meant to be json or folder
+#      from the path. Will throw an error when trying to overwrite a #READONLY file.
+#      Note that for frequent saving data_shelvers are preferred, json is used when 
+#      human-readability is prioritized over ease of saving. In practice this means
+#      persistent settings are json, often read-only, and game-specific data is shelved. """
+#     if(".json" in path):
+#         __write_if_not_readonly(to_save, path, sort_keys, indent)
+#     else:
+#         for file_name, data in to_save:
+#             save_json(data, path + "/" + file_name + ".json", sort_keys, indent)
 
             
 def __write_if_not_readonly(to_save, path, sort_keys, indent):            
