@@ -2,7 +2,7 @@ from tcod import image_load
 import tdl
 
 from death_functions import kill_monster, kill_player
-from entity import get_blocking_entity_at_location
+from entity import get_blocking_entity_at
 from game_messages import Message
 from game_states import GameStates
 from input_handlers import handle_keys, handle_mouse, handle_main_menu
@@ -158,7 +158,7 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
             destination_y = player.y + dy
 
             if game_map.walkable[destination_x, destination_y]:
-                target = get_blocking_entity_at_location(entities, destination_x, destination_y)
+                target = get_blocking_entity_at(entities, destination_x, destination_y)
 
                 if target:
                     attack_results = player.fighter.attack(target, game_map, entities)

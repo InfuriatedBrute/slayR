@@ -33,7 +33,7 @@ class Entity:
         dx = path[0][0] - self.x
         dy = path[0][1] - self.y
 
-        if game_map.walkable[path[0][0], path[0][1]] and not get_blocking_entity_at_location(entities, self.x + dx,
+        if game_map.walkable[path[0][0], path[0][1]] and not get_blocking_entity_at(entities, self.x + dx,
                                                                                                self.y + dy):
             self.move(dx, dy)
             
@@ -44,9 +44,10 @@ class Entity:
         return self.distance(other.x, other.y)
 
 
-def get_blocking_entity_at_location(entities, destination_x, destination_y):
+def get_blocking_entity_at(entities, destination_x, destination_y):
     if entities is None:
         return None
     toReturn = [entity for entity in entities if entity.x == destination_x and 
             entity.y == destination_y and  entity.blocks]
+    assert len(toReturn) <= 1, "There were two blocking entities in the same location. This should never happen."
     return toReturn[0] if toReturn else None
