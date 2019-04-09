@@ -90,7 +90,7 @@ def render_all(con, panel, entities, game_map, fov_recompute, root_console, mess
     rightSide = True
     for entity in entities:
 
-        if(entity.god and entity.fighter):
+        if(entity.unique and entity.fighter):
             relative_hp = str(int(entity.fighter.hp * config['hp_scale'] / entity.fighter.max_hp))
 
             indent = config['name_length'] + 8 if rightSide else 1

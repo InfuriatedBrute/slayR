@@ -80,7 +80,7 @@ def place_entities(room, entities, dungeon_level, colors, num_monsters):
             ai_component = BasicMonster()
 
             monster = Entity(x, y, 'o', colors.get('desaturated_green'), 'Orc', blocks=True,
-                render_order=RenderOrder.ACTOR, fighter=fighter_component, ai=ai_component, god=True)
+                render_order=RenderOrder.ACTOR, fighter=fighter_component, ai=ai_component, unique=True)
 
             entities.append(monster)
 

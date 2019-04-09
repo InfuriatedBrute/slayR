@@ -10,15 +10,17 @@ class Entity:
 
     @initialize_all_post
     def __init__(self, x, y, char, color, name, blocks=False, render_order=RenderOrder.CORPSE, fighter=None, ai=None,
-                 item=None, inventory=None, stairs=None, level=None, equipment=None, equippable=None, god=False,):
+                 item=None, inventory=None, stairs=None, level=None, equipment=None, equippable=None, unique=False):
         
-        for e in {fighter, ai, item, inventory, stairs, level, equipment, equippable}:
-            if e:
-                e.owner = self#
-
         if equippable and not item:
             item = Item()
-            item.owner = self
+            
+        components = {fighter, ai, item, inventory, stairs, level, equipment, equippable}
+        
+        for c in components:
+            if c:
+                c.owner = self
+
 
 
     def move(self, dx, dy):
